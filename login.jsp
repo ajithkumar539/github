@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -89,37 +90,37 @@
 </style>
 </head>
 <body>
-<div class="container">
+<div class="container" style="background-color:lightblue;">
     <div class="row">
     <%@ include file="header6.jsp" %>
         <div class="col-sm-6 col-md-4 col-md-offset-4">
         
-            <h1 class="text-center login-title">Sign in to continue </h1>
+         4   <h1 class="text-center login-title">Sign in to continue </h1>
             <div class="account-wall">
-               <div style="margin-left:20px;"><img src="dizzy.jpg" align="middle"></div>
+               <div style="margin-left:25px;"><img src="dizzy.jpg" align="middle"></div>
                 <form class="form-signin" action="Servlet1" method="post">
-                <div><%  //Remove '@' 
+                <div>
+                <%  //Remove '@' 
  if (request.getAttribute("Error")!= null) 
                      { 
                  %>
-       <div class="alert alert-danger" id="errorbox"><a class="close" data-dismiss="errorbox"><i class="fa fa-times" aria-hidden="true"></i></a><span>
-   <strong>${requestScope.Error}</strong> </span></div>
+       <div class="alert alert-danger" id="errorbox">
+       <a class="close" data-dismiss="errorbox">
+       <i class="fa fa-times" aria-hidden="true">
+       </i></a>
+       <span>
+   <strong>${requestScope.Error}</strong>
+    </span>
+   </div>
  
        <% } %>
- 		 <% if (request.getAttribute("Error")!= null) { %>
- 		      <div class="alert alert-danger" id="errorbox">
- 		      	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
- 		      	<span><strong>${requestScope.Error}</strong></span>
- 		      </div>
- 		<% } %></div>
+ 		
                 <input type="text" name ="username" class="form-control" placeholder="Email" required autofocus>
                 <input type="password" name="password" class="form-control" placeholder="Password" required>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <button class="btn btn-lg btn-primary btn-block" onclick="fade_out" type="submit">
                     Sign in</button>
-                <label class="checkbox pull-left">
-                    <input type="checkbox" value="remember-me">
-                    Remember me
-                </label>
+                     <button class="btn btn-lg btn-primary btn-block" type="reset">
+                    cancel</button>
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
                 </form>
             </div>
@@ -130,6 +131,10 @@
 <script> var fade_out = function() {
 	  $("#errorbox").fadeOut();
 	}
+	
+	setTimeout(fade_out,3000);
+	
 </script>
+<%@ include file="footer.jsp" %>
 </body>
 </html>
